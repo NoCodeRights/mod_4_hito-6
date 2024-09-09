@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { formatNumber } from "../scripts";
+import { CartContext } from "../context/CartContext";
 
 export const CardPizza = ({ name, price, ingredients, img, desc }) => {
+  const { addToCart } = useContext(CartContext);
+  const createCart = (pizzaId, pizzaName, pizzaImg, pizzaPrice) => {
+    const newElementCart = {
+      pizzaId,
+      pizzaName,
+      pizzaImg,
+      pizzaPrice,
+      quantity: 1,
+    };
+    addToCart(newElementCart);
+  };
   return (
     <div>
       <Card style={{ width: "25rem" }}>
@@ -16,7 +28,9 @@ export const CardPizza = ({ name, price, ingredients, img, desc }) => {
             <hr />
           </div>
           <div className="d-flex justify-content-center fs-6">
-            <Card.Text><strong>Ingredientes</strong></Card.Text>
+            <Card.Text>
+              <strong>Ingredientes</strong>
+            </Card.Text>
             <hr />
             <hr />
             <hr />
@@ -37,7 +51,12 @@ export const CardPizza = ({ name, price, ingredients, img, desc }) => {
             <Button className="border" variant="light">
               Ver más 👀
             </Button>
-            <Button variant="dark">Añadir 🛒</Button>
+            <Button
+              variant="dark"
+              onClick={() => createCart(id, name, img, price)}
+            >
+              Añadir 🛒
+            </Button>
           </div>
         </Card.Body>
       </Card>
