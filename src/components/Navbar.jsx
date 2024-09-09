@@ -6,8 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 
 function NavbarApp() {
-  const { calculateTotal } = useContext(CartContext); 
-  const total = calculateTotal();
+  const { amount } = useContext(CartContext); 
   const token = true;
 
   return (
@@ -48,7 +47,7 @@ function NavbarApp() {
         </Nav>
         {token && (
           <Button className="btn-sm" variant="outline-info" href="#total">
-            <Link to="/Cart">🛒Total: {formatNumber(total)}</Link>
+            <Link to="/Cart">🛒Total: {formatNumber(amount)}</Link>
           </Button>
         )}
       </Container>
