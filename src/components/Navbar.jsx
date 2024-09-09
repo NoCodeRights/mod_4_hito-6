@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import { formatNumber } from "../scripts";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+
 
 function NavbarApp() {
-  const total = 25000;
+  const { calculateTotal } = useContext(CartContext); 
+  const total = calculateTotal();
   const token = true;
 
   return (

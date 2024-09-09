@@ -11,10 +11,13 @@ import Pizza from "./pages/Pizza";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import { CartProvider } from "./context/CartContext";
 
 
 function App() {
   return (
+    <CartProvider>
+
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -28,6 +31,7 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter>
+    </CartProvider>
   );
 }
 
