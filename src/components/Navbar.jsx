@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
 import { formatNumber } from "../scripts";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 
 function NavbarApp() {
-  const { amount } = useContext(CartContext); 
+  const { total } = useContext(CartContext);
   const token = true;
 
   return (
@@ -27,13 +27,13 @@ function NavbarApp() {
                 <Link to="/Profile">🔓Profile</Link>
               </Button>
               <Button className="btn-sm" variant="outline-light" href="#Logout">
-              <Link to="/">🔒Logout</Link>
+                <Link to="/">🔒Logout</Link>
               </Button>
             </>
           ) : (
             <>
               <Button className="btn-sm" variant="outline-light" href="#Login">
-              <Link to="/LoginPage">🔐Login</Link>
+                <Link to="/LoginPage">🔐Login</Link>
               </Button>
               <Button
                 className="btn-sm"
@@ -47,7 +47,7 @@ function NavbarApp() {
         </Nav>
         {token && (
           <Button className="btn-sm" variant="outline-info" href="#total">
-            <Link to="/Cart">🛒Total: {formatNumber(amount)}</Link>
+            <Link to="/Cart">🛒Total: {formatNumber(total)}</Link>
           </Button>
         )}
       </Container>

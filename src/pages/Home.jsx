@@ -4,23 +4,23 @@ import CardPizza from "../components/CardPizza";
 
 function Home() {
   const [pizzas, setPizzas] = useState([])
-  const getPizzas = async () =>{
-    const respuesta =await fetch('http://localhost:5000/api/pizzas')
+  const getPizzas = async () => {
+    const respuesta = await fetch('http://localhost:5000/api/pizzas')
     const pizzas = await respuesta.json()
     setPizzas(pizzas)
   }
 
-useEffect(()=>{
-  getPizzas()
-},[])
+  useEffect(() => {
+    getPizzas()
+  }, [])
 
   return (
     <div>
       <Header />
       <div className="d-flex justify-content-center gap-3 mt-3 mb-3">
-        {pizzas.map((e,index) => (
+        {pizzas.map((e) => (
           <CardPizza
-            key={index}
+            id={e.id}
             img={e.img}
             name={e.name}
             desc={e.desc}

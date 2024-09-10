@@ -4,11 +4,15 @@ import Card from "react-bootstrap/Card";
 import { formatNumber } from "../scripts";
 import { CartContext } from "../context/CartContext";
 
-export const CardPizza = ({ name, price, ingredients, img, desc }) => {
+export const CardPizza = ({ id, name, price, ingredients, img, desc }) => {
   const { addToCart } = useContext(CartContext);
-  const createCart = (pizzaId, pizzaName, pizzaImg, pizzaPrice) => {
+
+
+
+  const createCart = (id, pizzaName, pizzaImg, pizzaPrice) => {
+
     const newElementCart = {
-      pizzaId,
+      id,
       pizzaName,
       pizzaImg,
       pizzaPrice,
